@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pacman-deployment
+  labels:
+    app: pacman
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pacman
+  template:
+    metadata:
+      labels:
+        app: pacman
+    spec:
+      containers:
+      - name: pacman
+        image: 416338226474.dkr.ecr.us-west-2.amazonaws.com/myapps/pacman:4b9be106bfd77b4d83789702f36352ef3fa660f6
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pacman-service
+  labels:
+    app: pacman
+annotations:
+  service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+  service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+spec:
+  type: LoadBalancer
+  selector:
+    app: pacman
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
