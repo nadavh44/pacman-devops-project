@@ -40,6 +40,12 @@ jobs:
         docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG ./docker
         docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
+    - name: Update Kubernetes image tag
+      env:
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        sed -i "s|IMAGE_TAG_PLACEHOLDER|$IMAGE_TAG|g" ./k8s/app_deployment.yaml
+    
     - name: Connect to EKS
       run: aws eks update-kubeconfig --region us-west-2 --name auto-mode-cluster
 
