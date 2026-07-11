@@ -3,8 +3,8 @@
 ## 🚀 Technologies
 
 ![AWS](https://img.shields.io/badge/AWS-EKS%20Auto%20Mode-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.34-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-v28.3.3-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 ![GitHub OIDC](https://img.shields.io/badge/GitHub-OIDC-success?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/MongoDB-StatefulSet-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
