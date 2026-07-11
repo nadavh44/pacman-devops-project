@@ -1,21 +1,5 @@
 # 🎮 Pac-Man DevOps Project
 
-A production-oriented DevOps implementation of the classic **Pac-Man** application using **Amazon EKS Auto Mode**, **GitHub Actions**, **Docker**, **Amazon ECR**, and **Kubernetes**.
-
-This project demonstrates modern DevOps practices including Infrastructure as Code, Kubernetes orchestration, secure CI/CD with GitHub OIDC authentication, containerized deployments, and automated delivery to Amazon EKS.
-
----
-
-## 📌 Project Overview
-
-The goal of this project was to deploy the Pac-Man application on Amazon Elastic Kubernetes Service (EKS) while implementing a secure and automated CI/CD pipeline following modern cloud engineering best practices.
-
-The solution provisions an Amazon EKS Auto Mode cluster, builds Docker images, stores them in Amazon Elastic Container Registry (ECR), and automatically deploys application updates to Kubernetes using GitHub Actions.
-
-To improve the project's production readiness, static AWS credentials were replaced with GitHub OpenID Connect (OIDC), allowing the CI/CD pipeline to assume temporary IAM roles without storing long-lived secrets.
-
-This repository was developed as part of a DevOps Engineering course while following professional engineering standards, emphasizing automation, security, maintainability, reproducibility, and clear technical documentation.
-
 ## 🚀 Technologies
 
 ![AWS](https://img.shields.io/badge/AWS-EKS%20Auto%20Mode-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
@@ -27,6 +11,18 @@ This repository was developed as part of a DevOps Engineering course while follo
 ![MongoDB](https://img.shields.io/badge/MongoDB-StatefulSet-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![eksctl](https://img.shields.io/badge/eksctl-Auto%20Mode-blueviolet?style=for-the-badge)
 ![EKS Auto Mode](https://img.shields.io/badge/EKS-Auto%20Mode-success?style=for-the-badge)
+
+A production-oriented DevOps implementation of the classic **Pac-Man** application deployed on **Amazon EKS Auto Mode** with a secure, fully automated CI/CD pipeline.
+
+---
+
+## 📌 Project Overview
+
+This project demonstrates an end-to-end DevOps workflow for deploying the classic Pac-Man application on **Amazon EKS Auto Mode** using modern cloud-native technologies and AWS services.
+
+The solution includes infrastructure provisioning with **eksctl**, containerization with **Docker**, image management using **Amazon ECR**, Kubernetes orchestration, and a fully automated CI/CD pipeline built with **GitHub Actions**.
+
+To improve security, the deployment pipeline authenticates to AWS using **GitHub OpenID Connect (OIDC)**, eliminating the need for long-lived AWS credentials while following AWS security best practices.
 
 ---
 
@@ -72,42 +68,18 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 - ⚙️ Managed the Kubernetes infrastructure using declarative YAML manifests and **eksctl**.
 - 🧹 Performed complete AWS resource cleanup after project validation to avoid unnecessary cloud costs.
 
-# 🛠️ Technology Stack
+## 🛠️ Technology Stack
 
-| Category | Technology |
-|----------|------------|
-| Cloud Platform | Amazon Web Services (AWS) |
-| Container Orchestration | Amazon EKS Auto Mode |
-| Containerization | Docker |
-| Container Registry | Amazon Elastic Container Registry (ECR) |
-| CI/CD | GitHub Actions |
-| Authentication | GitHub OIDC |
-| Kubernetes Resources | Deployment, StatefulSet, Service, PersistentVolumeClaim |
-| Database | MongoDB |
-| Infrastructure Provisioning | eksctl |
-| Load Balancer | AWS Network Load Balancer (NLB) |
-| Storage | Amazon EBS Persistent Volumes |
-| Version Control | Git & GitHub |
-
-# 📁 Repository Structure
-
-```text
-.
-├── .github/
-│   └── workflows/          # GitHub Actions CI/CD pipeline
-├── docker/                 # Docker build files
-├── docs/
-│   ├── diagrams/           # Architecture and CI/CD diagrams
-│   ├── screenshots/        # Project screenshots
-│   └── prompts/            # AI prompts used to generate diagrams
-├── ekscluster/             # EKS Auto Mode cluster configuration
-├── k8s/                    # Kubernetes manifests
-├── lib/                    # Application source files
-├── public/                 # Static application assets
-├── app.js                  # Application entry point
-├── package.json
-└── README.md
-```
+| Category | Technologies |
+|-----------|--------------|
+| **Cloud** | AWS (Amazon EKS Auto Mode, Amazon ECR, IAM, Amazon EBS, Network Load Balancer) |
+| **Containerization** | Docker |
+| **Orchestration** | Kubernetes |
+| **CI/CD** | GitHub Actions |
+| **Infrastructure as Code** | eksctl |
+| **Security** | GitHub OIDC |
+| **Database** | MongoDB |
+| **Version Control** | Git & GitHub |
 
 # 🔐 Security Implementation
 
@@ -155,36 +127,157 @@ Pac-Man Application
 
 Each deployment is versioned using the Git commit SHA, ensuring traceability and immutable image versions. GitHub OIDC enables secure authentication to AWS without storing long-lived credentials inside the repository.
 
-# ☸️ Kubernetes Architecture
+# ⚡ End-to-End Deployment Guide
 
-The application is deployed on Amazon EKS Auto Mode using Kubernetes native resources.
+Follow the steps below to reproduce the complete project from scratch, including the Kubernetes cluster, GitHub OIDC authentication, CI/CD pipeline, and application deployment.
 
-| Resource | Purpose |
-|----------|---------|
-| Deployment | Runs multiple replicas of the Pac-Man application for high availability |
-| StatefulSet | Hosts the MongoDB database with stable identities |
-| PersistentVolumeClaim | Provides persistent storage for MongoDB |
-| Service (ClusterIP) | Internal communication between Pac-Man and MongoDB |
-| Service (LoadBalancer) | Exposes the application externally using AWS Network Load Balancer |
+---
 
-The application consists of stateless and stateful workloads, following Kubernetes best practices by separating the application layer from the database layer.
+## 1. Clone the Repository
 
-# ☁️ Infrastructure
+Clone the repository and navigate to the project directory.
 
-The infrastructure was provisioned using **eksctl** with **Amazon EKS Auto Mode**, reducing operational overhead while maintaining a production-oriented Kubernetes environment.
+```bash
+git clone https://github.com/nadavh44/pacman-devops-project.git
+cd pacman-devops-project
+```
 
-Main infrastructure components:
+---
 
-- Amazon EKS Auto Mode Cluster
-- Amazon Elastic Container Registry (ECR)
-- AWS IAM Roles
+## 2. Configure AWS CLI
+
+Configure the AWS CLI using an IAM user with the required permissions.
+
+Verify that authentication is working correctly:
+
+```bash
+aws sts get-caller-identity
+```
+
+---
+
+## 3. Create the Amazon EKS Auto Mode Cluster
+
+The cluster configuration is stored in:
+
+```text
+ekscluster/cluster.yaml
+```
+
+Create the cluster:
+
+```bash
+eksctl create cluster -f ekscluster/cluster.yaml
+```
+
+After the deployment completes, verify that the cluster is running:
+
+```bash
+kubectl get nodes
+kubectl get pods -A
+```
+
+---
+
+## 4. Create the Amazon ECR Repository
+
+Create an Amazon Elastic Container Registry (ECR) repository to store the Docker images.
+
+```bash
+aws ecr create-repository --repository-name pacman --region us-west-2
+```
+
+---
+
+## 5. Configure GitHub OIDC Authentication
+
+To avoid storing long-lived AWS credentials in GitHub, this project authenticates using **GitHub OpenID Connect (OIDC)**.
+
+The configuration includes:
+
 - GitHub OIDC Identity Provider
-- AWS Network Load Balancer
-- Amazon EBS Persistent Volumes
-- Kubernetes Deployments and StatefulSets
+- IAM Role for GitHub Actions
+- IAM Permissions
+- Amazon EKS Access Entry
 
-Infrastructure configuration files are located under the `ekscluster/` directory, while Kubernetes manifests are stored in the `k8s/` directory.
+The complete workflow is implemented in:
 
+```text
+.github/workflows/main_secure.yaml
+```
+
+---
+
+## 6. Configure GitHub Actions
+
+The CI/CD pipeline uses the GitHub Actions workflow located at:
+
+```text
+.github/workflows/main_secure.yaml
+```
+
+The workflow automatically:
+
+- Authenticates to AWS using GitHub OIDC
+- Builds the Docker image
+- Pushes the image to Amazon ECR
+- Tags the image using the Git commit SHA
+- Updates the Kubernetes Deployment running on Amazon EKS
+
+The workflow can be started manually using the **workflow_dispatch** trigger from the GitHub Actions page.
+
+---
+
+## 7. Deploy the Kubernetes Resources
+
+The Kubernetes manifests are stored in the `k8s` directory.
+
+Deploy the application:
+
+```bash
+kubectl apply -f k8s/
+```
+
+Verify the deployment:
+
+```bash
+kubectl get pods
+kubectl get svc
+kubectl get statefulsets
+kubectl get pvc
+```
+
+---
+
+## 8. Access the Application
+
+After the LoadBalancer has been provisioned, retrieve its external endpoint:
+
+```bash
+kubectl get svc
+```
+
+Open the generated **EXTERNAL-IP** in your browser to access the running Pac-Man application.
+
+---
+
+## 9. Verify the Deployment
+
+Validate that the deployment completed successfully.
+
+The following screenshots demonstrate the final result:
+
+**GitHub Actions Pipeline**
+
+`docs/screenshots/phase-4/16-github-actions-pipeline-success.png`
+
+**Running Application**
+
+`docs/screenshots/phase-4/17-pacman-application-running-browser.png`
+
+These screenshots confirm that the CI/CD pipeline completed successfully and that the application was deployed and served from Amazon EKS.
+
+######
 # 🚀 Deployment Guide
 
 ## Prerequisites
