@@ -16,7 +16,7 @@ A production-oriented DevOps implementation of the classic **Pac-Man** applicati
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
 This project demonstrates an end-to-end DevOps workflow for deploying the classic Pac-Man application on **Amazon EKS Auto Mode** using modern cloud-native technologies and AWS services.
 
@@ -70,7 +70,7 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 
 ---
 
-## 🛠️ Technology Stack
+# 🛠️ Technology Stack
 
 | Category | Technologies |
 |-----------|--------------|
@@ -78,7 +78,7 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 | **Containerization** | Docker |
 | **Orchestration** | Kubernetes |
 | **CI/CD** | GitHub Actions |
-| **Infrastructure as Code** | eksctl |
+| **Cluster Provisioning** | eksctl |
 | **Security** | GitHub OIDC |
 | **Database** | MongoDB |
 | **Version Control** | Git & GitHub |
@@ -159,6 +159,8 @@ Configure the AWS CLI using an IAM user with the required permissions.
 Verify that authentication is working correctly:
 
 ```bash
+aws configure
+
 aws sts get-caller-identity
 ```
 
@@ -194,6 +196,7 @@ Create an Amazon Elastic Container Registry (ECR) repository to store the Docker
 ```bash
 aws ecr create-repository --repository-name pacman --region us-west-2
 ```
+The repository only needs to be created once.
 
 ---
 
@@ -277,7 +280,7 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
 
 ---
 
-### GitHub Actions Pipeline
+# GitHub Actions Pipeline
 
 <p align="center">
   <img src="docs/screenshots/phase-4/16-github-actions-pipeline-success.png" alt="GitHub Actions Pipeline Success" width="900">
@@ -285,7 +288,7 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
 
 ---
 
-### Running Pac-Man Application
+# Running Pac-Man Application
 
 <p align="center">
   <img src="docs/screenshots/phase-4/17-pacman-application-running-browser.png" alt="Pac-Man Running on Amazon EKS" width="900">
@@ -295,7 +298,7 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
 
 # ✅ Validation
 
-The deployment was successfully validated by verifying the following:
+The project was successfully validated by confirming the following:
 
 - Docker image successfully built and pushed to Amazon ECR.
 - GitHub Actions workflow completed successfully.
@@ -309,7 +312,7 @@ The deployment was successfully validated by verifying the following:
 
 ---
 
-## 🚀 Future Improvements
+# 🚀 Future Improvements
 
 Possible enhancements for future iterations of this project include:
 
@@ -326,7 +329,7 @@ Possible enhancements for future iterations of this project include:
 
 ---
 
-## 🧹 Cleanup
+# 🧹 Cleanup
 
 After validating the deployment, all AWS resources were removed to avoid unnecessary cloud costs.
 
@@ -337,7 +340,7 @@ The cleanup process included:
 - Network Load Balancer (NLB)
 - Amazon EBS volumes
 - Kubernetes resources
-- Amazon ECR images (optional)
+- Amazon ECR images
 
 Cleaning up cloud resources after completing the project is a recommended AWS best practice that helps prevent unnecessary charges while keeping the project fully reproducible.
 
