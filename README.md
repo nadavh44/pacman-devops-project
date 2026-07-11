@@ -265,105 +265,19 @@ Open the generated **EXTERNAL-IP** in your browser to access the running Pac-Man
 
 Validate that the deployment completed successfully.
 
-The following screenshots demonstrate the final result:
+The screenshots below confirm that the CI/CD pipeline completed successfully and that the Pac-Man application was deployed and served from Amazon EKS.
 
-**GitHub Actions Pipeline**
+### GitHub Actions Pipeline
 
-`docs/screenshots/phase-4/16-github-actions-pipeline-success.png`
+<p align="center">
+  <img src="docs/screenshots/phase-4/16-github-actions-pipeline-success.png" alt="GitHub Actions Pipeline Success" width="900">
+</p>
 
-**Running Application**
+### Running Pac-Man Application
 
-`docs/screenshots/phase-4/17-pacman-application-running-browser.png`
-
-These screenshots confirm that the CI/CD pipeline completed successfully and that the application was deployed and served from Amazon EKS.
-
-######
-# 🚀 Deployment Guide
-
-## Prerequisites
-
-- AWS Account
-- AWS CLI
-- kubectl
-- eksctl
-- Docker
-- GitHub Repository
-- GitHub Actions
-- GitHub OIDC configured
-- Amazon EKS Auto Mode Cluster
-
-## Deployment Steps
-
-1. Clone the repository.
-2. Build the Docker image.
-3. Push the image to Amazon ECR.
-4. Configure access to the EKS cluster.
-5. Apply the Kubernetes manifests.
-6. Verify the deployment using kubectl.
-
-# ✅ Validation
-
-The deployment was successfully validated by verifying the following:
-
-- Docker image successfully built and pushed to Amazon ECR.
-- GitHub Actions workflow completed successfully.
-- GitHub OIDC authentication successfully assumed the IAM deployment role.
-- Amazon EKS cluster was reachable using kubectl.
-- Kubernetes resources were successfully deployed.
-- MongoDB StatefulSet initialized correctly.
-- Persistent storage was successfully attached.
-- Pac-Man application became accessible through the AWS Network Load Balancer.
-- Application functionality was verified through browser testing.
-
-# 📸 Project Screenshots
-
-Project screenshots documenting the implementation process are available under:
-
-```text
-docs/screenshots/
-```
-
-The screenshots cover the complete project lifecycle, including:
-
-- AWS infrastructure provisioning
-- Amazon EKS cluster creation
-- GitHub Actions workflow execution
-- Amazon ECR image publishing
-- Kubernetes deployment
-- Running application
-- Project validation
-```
-
-# ⚖️ Engineering Decisions
-
-Several engineering decisions were made throughout the project to improve security, maintainability, and operational simplicity.
-
-| Decision | Reason |
-|----------|--------|
-| Amazon EKS Auto Mode | Reduced infrastructure management overhead |
-| GitHub OIDC | Eliminated long-lived AWS credentials |
-| Git SHA Image Tags | Improved deployment traceability |
-| MongoDB StatefulSet | Enabled persistent database storage |
-| Amazon ECR | Native integration with AWS and Kubernetes |
-| eksctl | Simple and declarative cluster provisioning |
-| Network Load Balancer | Native Kubernetes LoadBalancer integration |
-
-# 📚 Lessons Learned
-
-This project provided hands-on experience with:
-
-- Amazon EKS Auto Mode
-- Kubernetes workload management
-- GitHub Actions CI/CD
-- GitHub OIDC authentication
-- Amazon ECR image management
-- Kubernetes StatefulSets
-- Persistent Volumes
-- Kubernetes Services
-- Infrastructure automation
-- Cloud security best practices
-
-Beyond the technical implementation, the project reinforced the importance of automation, documentation, reproducibility, and engineering decision-making when designing cloud-native applications.
+<p align="center">
+  <img src="docs/screenshots/phase-4/17-pacman-application-running-browser.png" alt="Pac-Man Running on Amazon EKS" width="900">
+</p>
 
 # 🚀 Future Improvements
 
