@@ -68,6 +68,8 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 - ⚙️ Managed the Kubernetes infrastructure using declarative YAML manifests and **eksctl**.
 - 🧹 Performed complete AWS resource cleanup after project validation to avoid unnecessary cloud costs.
 
+---
+
 ## 🛠️ Technology Stack
 
 | Category | Technologies |
@@ -80,6 +82,8 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 | **Security** | GitHub OIDC |
 | **Database** | MongoDB |
 | **Version Control** | Git & GitHub |
+
+---
 
 # 🔐 Security Implementation
 
@@ -94,6 +98,8 @@ The following practices were implemented:
 - **Git SHA image tagging** to ensure immutable deployments.
 - No AWS credentials or sensitive information are stored in the repository.
 - All cloud resources were removed after validation to minimize security exposure and cloud costs.
+
+---
 
 # ⚙️ Deployment Workflow
 
@@ -126,6 +132,8 @@ Pac-Man Application
 ```
 
 Each deployment is versioned using the Git commit SHA, ensuring traceability and immutable image versions. GitHub OIDC enables secure authentication to AWS without storing long-lived credentials inside the repository.
+
+---
 
 # ⚡ End-to-End Deployment Guide
 
@@ -267,11 +275,15 @@ Validate that the deployment completed successfully.
 
 The screenshots below confirm that the CI/CD pipeline completed successfully and that the Pac-Man application was deployed and served from Amazon EKS.
 
+---
+
 ### GitHub Actions Pipeline
 
 <p align="center">
   <img src="docs/screenshots/phase-4/16-github-actions-pipeline-success.png" alt="GitHub Actions Pipeline Success" width="900">
 </p>
+
+---
 
 ### Running Pac-Man Application
 
@@ -279,30 +291,57 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
   <img src="docs/screenshots/phase-4/17-pacman-application-running-browser.png" alt="Pac-Man Running on Amazon EKS" width="900">
 </p>
 
-# 🚀 Future Improvements
+---
 
-Possible production enhancements include:
+# ✅ Validation
 
-- Helm chart packaging
-- GitOps deployment using ArgoCD
-- Monitoring with Prometheus and Grafana
-- Centralized logging
-- Horizontal Pod Autoscaler
-- AWS Secrets Manager integration
-- TLS termination and custom domain
-- Multi-environment deployment strategy
+The deployment was successfully validated by verifying the following:
 
-# 🧹 Cleanup
+- Docker image successfully built and pushed to Amazon ECR.
+- GitHub Actions workflow completed successfully.
+- GitHub OIDC authentication successfully assumed the IAM deployment role.
+- Amazon EKS cluster was reachable using kubectl.
+- Kubernetes resources were successfully deployed.
+- MongoDB StatefulSet initialized correctly.
+- Persistent storage was successfully attached.
+- Pac-Man application became accessible through the AWS Network Load Balancer.
+- Application functionality was verified through browser testing.
 
-After validating the project, all AWS resources were removed to avoid unnecessary cloud costs.
+---
 
-The cleanup included:
+## 🚀 Future Improvements
 
-- Amazon EKS Cluster
-- Amazon ECR resources
-- IAM temporary resources created specifically for the project
-- Kubernetes workloads
-- Persistent storage
+Possible enhancements for future iterations of this project include:
+
+- Package Kubernetes resources using **Helm Charts**
+- Implement **GitOps** with **Argo CD**
+- Configure **Horizontal Pod Autoscaler (HPA)**
+- Integrate **AWS Secrets Manager** for secret management
+- Add monitoring with **Prometheus** and **Grafana**
+- Implement centralized logging using **Fluent Bit**
+- Enable container image vulnerability scanning
+- Support multiple deployment environments (Development, Staging, and Production)
+- Implement **Blue/Green** or **Canary** deployment strategies
+- Provision the infrastructure using **Terraform** instead of `eksctl`
+
+---
+
+## 🧹 Cleanup
+
+After validating the deployment, all AWS resources were removed to avoid unnecessary cloud costs.
+
+The cleanup process included:
+
+- Amazon EKS Auto Mode Cluster
+- Amazon EC2 worker nodes
+- Network Load Balancer (NLB)
+- Amazon EBS volumes
+- Kubernetes resources
+- Amazon ECR images (optional)
+
+Cleaning up cloud resources after completing the project is a recommended AWS best practice that helps prevent unnecessary charges while keeping the project fully reproducible.
+
+---
 
 # 👨‍💻 Author
 
