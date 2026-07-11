@@ -211,7 +211,7 @@ The configuration includes:
 - IAM Permissions
 - Amazon EKS Access Entry
 
-The complete workflow is implemented in:
+The GitHub Actions workflow is defined in:
 
 ```text
 .github/workflows/main_secure.yaml
@@ -280,7 +280,7 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
 
 ---
 
-# GitHub Actions Pipeline
+### GitHub Actions Pipeline
 
 <p align="center">
   <img src="docs/screenshots/phase-4/16-github-actions-pipeline-success.png" alt="GitHub Actions Pipeline Success" width="900">
@@ -288,7 +288,7 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
 
 ---
 
-# Running Pac-Man Application
+### Running Pac-Man Application
 
 <p align="center">
   <img src="docs/screenshots/phase-4/17-pacman-application-running-browser.png" alt="Pac-Man Running on Amazon EKS" width="900">
