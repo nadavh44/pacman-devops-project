@@ -12,6 +12,7 @@
 A production-oriented DevOps implementation of the classic **Pac-Man** application deployed on **Amazon EKS Auto Mode** with a secure, fully automated CI/CD pipeline.
 
 ---
+<a id="top"></a>
 
 ## 📚 Table of Contents
 
@@ -35,7 +36,9 @@ This project demonstrates an end-to-end DevOps workflow for deploying the classi
 The solution includes infrastructure provisioning with **eksctl**, containerization with **Docker**, image management using **Amazon ECR**, Kubernetes orchestration, and a fully automated CI/CD pipeline built with **GitHub Actions**.
 
 To improve security, the deployment pipeline authenticates to AWS using **GitHub OpenID Connect (OIDC)**, eliminating the need for long-lived AWS credentials while following AWS security best practices.
-
+<p align="right">
+<a href="#top">⬆️ Back to Top</a>
+</p>
 ---
 
 # 🏗️ Solution Architecture
