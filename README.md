@@ -116,9 +116,10 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 <a href="#top">⬆️ Back to Table of Contents</a>
 </p>
 
-⬆️ [Back to Table of Contents](#top)
+<p align="center">
+  <a href="#top" title="Back to Table of Contents">⇧</a>
+</p>
 
----
 ---
 
 # 🔐 Security Implementation
