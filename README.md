@@ -36,17 +36,11 @@ This project demonstrates an end-to-end DevOps workflow for deploying the classi
 The solution includes infrastructure provisioning with **eksctl**, containerization with **Docker**, image management using **Amazon ECR**, Kubernetes orchestration, and a fully automated CI/CD pipeline built with **GitHub Actions**.
 
 To improve security, the deployment pipeline authenticates to AWS using **GitHub OpenID Connect (OIDC)**, eliminating the need for long-lived AWS credentials while following AWS security best practices.
-<p align="right">
-<a href="#top">⬆️ Back to Top</a>
-</p>
 
 <p align="center">
 <a href="#top">⬆️ Back to Table of Contents</a>
 </p>
 
-<p align="left">
-<a href="#top">⬆️ Back to Table of Contents</a>
-</p>
 ---
 
 # 🏗️ Solution Architecture
@@ -57,6 +51,10 @@ It includes GitHub Actions, Amazon ECR, Amazon EKS Auto Mode, the Kubernetes wor
 
 <p align="center">
   <img src="docs/diagrams/runtime-architecture.png" alt="Runtime Architecture" width="900">
+</p>
+
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
 </p>
 
 ---
@@ -77,6 +75,10 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
   <img src="docs/diagrams/cicd-pipeline.png" alt="CI/CD Pipeline" width="900">
 </p>
 
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
+
 ---
 
 # ⭐ Project Highlights
@@ -90,6 +92,10 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 - 🌐 Exposed the application through an **AWS Network Load Balancer (NLB)**.
 - ⚙️ Managed the Kubernetes infrastructure using declarative YAML manifests and **eksctl**.
 - 🧹 Performed complete AWS resource cleanup after project validation to avoid unnecessary cloud costs.
+
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
 
 ---
 
@@ -106,6 +112,10 @@ Every code change pushed to the **master** branch automatically triggers GitHub 
 | **Database** | MongoDB |
 | **Version Control** | Git & GitHub |
 
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
+
 ---
 
 # 🔐 Security Implementation
@@ -121,6 +131,10 @@ The following practices were implemented:
 - **Git SHA image tagging** to ensure immutable deployments.
 - No AWS credentials or sensitive information are stored in the repository.
 - All cloud resources were removed after validation to minimize security exposure and cloud costs.
+
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
 
 ---
 
@@ -155,6 +169,10 @@ Pac-Man Application
 ```
 
 Each deployment is versioned using the Git commit SHA, ensuring traceability and immutable image versions. GitHub OIDC enables secure authentication to AWS without storing long-lived credentials inside the repository.
+
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
 
 ---
 
@@ -317,6 +335,10 @@ The screenshots below confirm that the CI/CD pipeline completed successfully and
   <img src="docs/screenshots/phase-4/17-pacman-application-running-browser.png" alt="Pac-Man Running on Amazon EKS" width="900">
 </p>
 
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
+
 ---
 
 # ✅ Validation
@@ -332,6 +354,10 @@ The project was successfully validated by confirming the following:
 - Persistent storage was successfully attached.
 - Pac-Man application became accessible through the AWS Network Load Balancer.
 - Application functionality was verified through browser testing.
+
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
 
 ---
 
@@ -349,5 +375,9 @@ The cleanup process included:
 - Amazon ECR images
 
 Cleaning up cloud resources after completing the project is a recommended AWS best practice that helps prevent unnecessary charges while keeping the project fully reproducible.
+
+<p align="center">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
 
 ---
