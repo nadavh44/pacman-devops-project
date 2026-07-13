@@ -309,23 +309,6 @@ The project was successfully validated by confirming the following:
 
 ---
 
-# 🚀 Future Improvements
-
-Possible enhancements for future iterations of this project include:
-
-- Package Kubernetes resources using **Helm Charts**
-- Implement **GitOps** with **Argo CD**
-- Configure **Horizontal Pod Autoscaler (HPA)**
-- Integrate **AWS Secrets Manager** for secret management
-- Add monitoring with **Prometheus** and **Grafana**
-- Implement centralized logging using **Fluent Bit**
-- Enable container image vulnerability scanning
-- Support multiple deployment environments (Development, Staging, and Production)
-- Implement **Blue/Green** or **Canary** deployment strategies
-- Provision the infrastructure using **Terraform** instead of `eksctl`
-
----
-
 # 🧹 Cleanup
 
 After validating the deployment, all AWS resources were removed to avoid unnecessary cloud costs.
@@ -342,11 +325,3 @@ The cleanup process included:
 Cleaning up cloud resources after completing the project is a recommended AWS best practice that helps prevent unnecessary charges while keeping the project fully reproducible.
 
 ---
-
-# 👨‍💻 Author
-
-**Nadav Harari**
-
-DevOps Portfolio Project
-
-GitHub: https://github.com/nadavh44
