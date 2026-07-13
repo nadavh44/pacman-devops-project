@@ -43,6 +43,10 @@ To improve security, the deployment pipeline authenticates to AWS using **GitHub
 <p align="center">
 <a href="#top">⬆️ Back to Table of Contents</a>
 </p>
+
+<p align="left">
+<a href="#top">⬆️ Back to Table of Contents</a>
+</p>
 ---
 
 # 🏗️ Solution Architecture
