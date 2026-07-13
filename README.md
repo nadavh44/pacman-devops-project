@@ -13,6 +13,21 @@ A production-oriented DevOps implementation of the classic **Pac-Man** applicati
 
 ---
 
+## 📚 Table of Contents
+
+- [📌 Project Overview](#-project-overview)
+- [🏗️ Solution Architecture](#️-solution-architecture)
+- [🔄 CI/CD Pipeline](#-cicd-pipeline)
+- [⭐ Project Highlights](#-project-highlights)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [🔐 Security Implementation](#-security-implementation)
+- [⚙️ Deployment Workflow](#️-deployment-workflow)
+- [⚡ End-to-End Deployment Guide](#-end-to-end-deployment-guide)
+- [✅ Validation](#-validation)
+- [🧹 Cleanup](#-cleanup)
+
+---
+
 # 📌 Project Overview
 
 This project demonstrates an end-to-end DevOps workflow for deploying the classic Pac-Man application on **Amazon EKS Auto Mode** using modern cloud-native technologies and AWS services.
